@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  # get 'homes/index'
+  # get 'homes/show'
+  # get 'homes/about'
   # devise_for :views
   # get 'comments/index'
   # get 'comments/show'
@@ -17,5 +20,9 @@ Rails.application.routes.draw do
     resources :comments
   end
 
-  root 'posts#index'
+  resources :homes 
+
+  get '/about' => 'homes#about'
+
+  root 'homes#index'
 end
