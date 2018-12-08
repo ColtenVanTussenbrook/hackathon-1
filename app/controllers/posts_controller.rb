@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :set_post, only: [:edit, :update, :destroy]
   def index
     @posts = current_user.posts
   end
@@ -9,6 +9,7 @@ class PostsController < ApplicationController
   end
 
   def show
+    @post = Post.find(params[:id])
   end
 
   def new 
@@ -37,7 +38,7 @@ class PostsController < ApplicationController
     end
   end
 
-  def destroy 
+  def destroy  
     @post.destroy 
     redirect_to posts_path
   end

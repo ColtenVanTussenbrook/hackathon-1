@@ -10,8 +10,13 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="container">
+      <%= yield %>
+      <footer style="margin-top:25%;">
+        <%= button_to "log out", destroy_user_session_path, method: :delete %>
+      </footer>
+    </div>
   </body>
 
-  <%= button_to "log out", destroy_user_session_path, method: :delete %>
+  
 </html>

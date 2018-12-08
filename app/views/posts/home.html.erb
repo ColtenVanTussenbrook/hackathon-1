@@ -1,5 +1,9 @@
+<h1>ALL POSTS</h1>
+<br/>
+<%= link_to "Add New Post", new_post_path %>
+<br/>
 <% @all_posts.each do |post| %>
-  <%= post.body %>
+  <%= link_to "#{post.body}", post_path(post.id) %>
+  <br/>
 <% end %>
 
-<%= link_to "Add New Post", posts_path %>
