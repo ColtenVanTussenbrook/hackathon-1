@@ -3,23 +3,22 @@ class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
 
   def index
-    @comments = @post.comments
+    @comments = current_user.posts.comments
   end
 
   def show
   end
 
   def new 
-    # binding.pry
     @comment = Comment.new
     # render partial: "form"
   end
 
   def create 
-    @comment = Comment.new(comment_params)
+    @comment = current_user.comments.new(comment_params)
+    @comment.post_id = params[:post_id]
     if @comment.save!
-      binding.pry
-      redirect_to root_path
+      redirect_to post_path(@post)
     else  
       render :new
     end
