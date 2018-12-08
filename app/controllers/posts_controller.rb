@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:edit, :update, :destroy]
+  before_action :set_post, only: [:edit, :update]
   def index
     @posts = current_user.posts
   end
@@ -38,9 +38,16 @@ class PostsController < ApplicationController
     end
   end
 
-  def destroy  
-    @post.destroy 
-    redirect_to posts_path
+  def destroy
+    @post = Post.find(params[:id]) 
+    if current_user.id == @post.user_id
+      set_post
+      @post.destroy 
+      redirect_to posts_path
+    else
+      flash[:alert] = "Error, you don't have permission to delete this post"
+      # redirect_to root_path
+    end
   end
 
   private 

@@ -1,8 +1,10 @@
-<%# <%= @post.id ? "Edit Post" : "Create Post" %> 
+
 
 <%= form_for [@post, @comment] do |f| %>
-
- <%= f.label :body %>
- <%= f.text_area :body %>
+<div class="input-field col s6">
+  <%= f.label :body %>
+  <%= f.text_area :body %>
+ </div>
  <%= f.submit %>
 <% end %>
+

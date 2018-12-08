@@ -1,8 +1,11 @@
-<%= @post.id ? "Edit Post" : "Create Post" %>
+<div class="form-class">
+  <h1 class="form-h1"><%= @post.id ? "Edit Post" : "Create Post" %></h1>
 
-<%= form_for [@post] do |f| %>
-
- <%= f.label :body %>
- <%= f.text_area :body %>
- <%= f.submit %>
-<% end %>
+  <%= form_for [@post] do |f| %>
+  <div class="input-field col s6">
+  <%= f.label :body %>
+  <%= f.text_area :body %>
+  </div>
+  <%= f.submit %>
+  <% end %>
+  </div>
