@@ -1,0 +1,8 @@
+<%= @post.id ? "Edit Post" : "Create Post" %>
+
+<%= form_for [@post] do |f| %>
+
+ <%= f.label :body %>
+ <%= f.text_area :body %>
+ <%= f.submit %>
+<% end %>

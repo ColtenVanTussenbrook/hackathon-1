@@ -1,3 +1,15 @@
-<% @posts.each do |post| %>
-<%= post.body %>
-<% end %>
+<h1><%= "#{current_user.first_name}'s POSTS" %></h1>
+<br/>
+  <ul>
+    <% @posts.each do |post| %>
+      <li>
+        <%= link_to "Post: #{post.body}", post_path(post.id) %>
+        <%= link_to "Edit Post", edit_post_path(post.id) %>
+        <br/>
+      </li>
+    <% end %>
+  </ul>
+
+<%= link_to 'Add New Post', new_post_path %>
+
+<%= button_to "log out", destroy_user_session_path, method: :delete %>
