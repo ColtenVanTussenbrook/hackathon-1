@@ -4,6 +4,10 @@ class PostsController < ApplicationController
     @posts = current_user.posts
   end
 
+  def home
+    @all_posts = Post.all
+  end
+
   def show
   end
 
