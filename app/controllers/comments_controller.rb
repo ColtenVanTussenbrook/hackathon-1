@@ -10,15 +10,17 @@ class CommentsController < ApplicationController
   end
 
   def new 
-    @comment = @post.comments.new
-    render partial: "form"
+    # binding.pry
+    @comment = Comment.new
+    # render partial: "form"
   end
 
   def create 
-    @comment = @post.comments(comment_params)
-    if @comment.save
-      redirect_to posts_path
-    else
+    @comment = Comment.new(comment_params)
+    if @comment.save!
+      binding.pry
+      redirect_to root_path
+    else  
       render :new
     end
   end
@@ -42,7 +44,7 @@ class CommentsController < ApplicationController
 
   private 
     def set_post 
-      @post = Post.find(params[:id])
+      @post = Post.find(params[:post_id])
     end
 
     def set_comment
