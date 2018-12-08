@@ -20,9 +20,5 @@ Rails.application.routes.draw do
     resources :comments
   end
 
-  resources :homes 
-
-  get '/about' => 'homes#about'
-
-  root 'homes#index'
+  root 'posts#index'
 end
